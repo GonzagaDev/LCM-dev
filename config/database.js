@@ -1,5 +1,6 @@
+var mongoUrli = process.env.MONGODB_URI || 'mongodb://admin:admin@ds029595.mlab.com:29595/dbdev';
 const mongoose = require('mongoose')
-module.exports = mongoose.connect('mongodb://admin:admin@ds029595.mlab.com:29595/dbdev')
+module.exports = mongoose.connect(mongoUrli)
 
  const db = mongoose.connection;
           db.on('error', (e) => console.log('Erro ao conectar com o banco de dados motivo: '+e))
