@@ -1,8 +1,8 @@
-const _ = required('lodash')
-const jwt = required('jsonwebtoken')
-const bcrypt = required('bcrypt')
-const User = required('./user')
-const env = required('../../.env')
+const _ = require('lodash')
+const jwt = require('jsonwebtoken')
+const bcrypt = require('bcrypt')
+const User = require('./user')
+const env = require('../../.env')
 
 const emailRegex = /\S+@\S+\.\S+/
 const passwordRegex = /((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,12})/
@@ -39,7 +39,7 @@ const validateToken = (req, res, next) => {
     })
 }
 
-const sigup = (req, res, next) => {
+const signup = (req, res, next) => {
     const name            = req.body.name             || ''
     const email           = req.body.email            || ''
     const password        = req.body.password         || ''

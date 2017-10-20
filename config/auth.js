@@ -1,5 +1,6 @@
-const jwt = required('jsonwebtoken')
-const env = required('../.env')
+const jwt = require('jsonwebtoken')
+
+const env = require('../.env')
 
 module.export = (re, res, next) => {
     // CORS prefligth request
