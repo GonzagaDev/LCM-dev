@@ -23,6 +23,7 @@ function parseErrors(nodeRestfulErrors) {
   return errors
 }
 
+/*Contador de registros*/
 BillingCycle.route('count', function(req, res, next) {
   BillingCycle.count(function(error, value) {
     if(error) {
