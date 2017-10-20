@@ -1,24 +1,25 @@
 const jwt = require('jsonwebtoken')
-
 const env = require('../.env')
 
-module.export = (re, res, next) => {
-    // CORS prefligth request
-    if(req.method === 'OPTIONS'){
+module.exports = (req, res, next) => {
+    
+    // CORS preflight request
+    if(req.method === 'OPTIONS') {
         next()
-    }else {
+    } else {
         const token = req.body.token || req.query.token || req.headers['authorization']
-        if(!token){
-            return res.status(403).send({errors: ['Token não informado']})
+
+        if(!token) {
+            return res.status(403).send({errors: ['No token provided.']})
         }
-        
-        jwt.verify(token, env.authSecret, function(er, decoded){
-            if(err){
+
+        jwt.verify(token, env.authSecret, function(err, decoded) {
+            if(err) {
                 return res.status(403).send({
-                    errors: ['Falha ao validar token.']
+                    errors: ['Failed to authenticate token.']
                 })
-            }else{
-                req.decoded = decoded
+            } else {
+                // req.decoded = decoded
                 next()
             }
         })
