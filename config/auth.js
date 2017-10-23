@@ -10,7 +10,7 @@ module.exports = (req, res, next) => {
         const token = req.body.token || req.query.token || req.headers['authorization']
 
         if(!token) {
-            return res.status(403).send({errors: ['Token Não informado.']})
+            return res.status(403).send({errors: ['Token não informado.']})
         }
 
         jwt.verify(token, env.authSecret, function(err, decoded) {
